@@ -5,15 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Veljko Dordevic | Cybersecurity Specialist</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
+      /* Background */
       --bg1:#0b0c0f;
       --bg2:#14161b;
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.75);
 
+      /* Text */
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.78);
+
+      /* Accent (cyber blue/cyan) */
+      --accent:#12d6ff;
+      --accentSoft:rgba(18,214,255,.20);
+      --accentGlow:rgba(18,214,255,.35);
+
+      /* Glass */
       --glass: rgba(255,255,255,.06);
       --glass-border: rgba(255,255,255,.14);
       --shadow: rgba(0,0,0,.55);
@@ -23,12 +33,12 @@
     html,body{height:100%;}
     body{
       font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
       background:
         radial-gradient(900px 500px at 20% 20%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(700px 450px at 80% 30%, rgba(255,255,255,.04), transparent 55%),
+        radial-gradient(700px 450px at 80% 30%, rgba(18,214,255,.06), transparent 55%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
-      color:var(--text);
-      overflow:hidden;
+      overflow:hidden; /* no page scroll */
     }
 
     /* NAVBAR */
@@ -41,59 +51,63 @@
       backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(255,255,255,.07);
     }
-
     nav{
       max-width:1200px;
       margin:0 auto;
       display:flex;
       justify-content:center;
       gap:28px;
+      flex-wrap:wrap;
     }
-
     nav a{
       cursor:pointer;
-      color:rgba(255,255,255,.8);
+      user-select:none;
       text-decoration:none;
+      color:rgba(255,255,255,.80);
       font-size:1.05rem;
+      font-weight:400;
       padding:8px 12px;
       border-radius:12px;
-      transition:.2s;
+      transition: background .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease;
     }
-
     nav a:hover{
+      color:#fff;
       background:rgba(255,255,255,.08);
-      color:#fff;
+      box-shadow: 0 0 0 1px rgba(18,214,255,.10) inset;
+      transform: translateY(-1px);
     }
-
     nav a.active{
-      background:rgba(255,255,255,.12);
       color:#fff;
+      background:rgba(255,255,255,.10);
+      box-shadow: 0 0 0 1px rgba(18,214,255,.18) inset;
     }
 
     /* SCREEN */
     .screen{
       height:100vh;
-      padding-top:90px;
-      padding-bottom:50px;
+      padding-top:92px;   /* navbar */
+      padding-bottom:52px;/* footer */
       display:flex;
       align-items:center;
-      justify-content:flex-start;
+      justify-content:flex-start; /* hero to left */
     }
 
     .stage{
       width:100%;
       max-width:1300px;
-      margin-left:60px;
+      margin-left:60px; /* left offset */
       position:relative;
     }
 
+    /* Views + fade */
     .view{
-      transition:opacity .25s ease, transform .25s ease;
+      transition: opacity .25s ease, transform .25s ease;
+      opacity:1;
+      transform: translateY(0);
     }
-
     .fade-out{
       opacity:0;
-      transform:translateY(12px);
+      transform: translateY(12px);
       pointer-events:none;
     }
 
@@ -101,7 +115,7 @@
     .hero{
       display:flex;
       align-items:center;
-      gap:36px;
+      gap:38px;
     }
 
     .avatar{
@@ -109,199 +123,237 @@
       height:300px;
       border-radius:50%;
       object-fit:cover;
-      border:4px solid rgba(255,255,255,.2);
-      box-shadow:0 20px 60px var(--shadow);
+      border:4px solid rgba(255,255,255,.18);
+      box-shadow: 0 22px 70px rgba(0,0,0,.60);
+      background: rgba(0,0,0,.35);
+    }
+
+    /* Move name/title slightly right (your request) */
+    .hero-text{
+      padding-left: 26px; /* <-- adjust this number if you want more/less */
     }
 
     .hero-text h1{
-      font-size:clamp(3.2rem,5vw,4.8rem);
-      font-weight:600;
-      line-height:1.05;
+      font-size: clamp(3.2rem, 5vw, 4.9rem);
+      font-weight: 700; /* stronger */
+      line-height: 1.05;
+      letter-spacing: .3px;
+      text-shadow: 0 14px 30px rgba(0,0,0,.45);
     }
 
     .hero-text .title{
-      margin-top:18px;
-      font-size:clamp(1.6rem,2.5vw,2.4rem);
-      font-weight:300;
-      color:var(--muted);
+      margin-top: 18px;
+      font-size: clamp(1.55rem, 2.4vw, 2.4rem);
+      font-weight: 300; /* lighter */
+      color: var(--muted);
     }
 
     .line{
-      margin-top:22px;
-      width:420px;
-      height:2px;
-      background:rgba(255,255,255,.25);
+      margin-top: 22px;
+      width: min(460px, 92%);
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      box-shadow: 0 0 16px var(--accentGlow);
+      opacity: .9;
     }
 
-    /* CONTENT PANEL */
+    /* CONTENT VIEW */
     .panel{
-      width:min(820px,92vw);
+      width:min(860px, 92vw);
       margin:0 auto;
-      padding:26px;
+      padding:28px;
       border-radius:20px;
-      background:var(--glass);
+      background: var(--glass);
       border:1px solid var(--glass-border);
-      backdrop-filter:blur(14px);
-      box-shadow:0 18px 55px rgba(0,0,0,.45);
-      max-height:60vh;
-      overflow:auto;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      max-height:60vh;   /* no page scroll */
+      overflow:auto;     /* scroll inside if needed */
       text-align:left;
     }
 
     .panel h2{
-      font-size:1.5rem;
+      font-size:1.55rem;
+      font-weight:600;
       margin-bottom:12px;
+      letter-spacing:.2px;
     }
 
     .panel p, .panel li{
-      font-size:1.05rem;
-      line-height:1.7;
-      color:rgba(255,255,255,.8);
+      font-size:1.06rem;
+      line-height:1.75;
+      color:rgba(255,255,255,.82);
     }
+    .panel ul{ margin-left:20px; margin-top:10px; }
 
-    .panel ul{margin-left:20px;}
+    /* Section-specific animations (subtle differences) */
+    .panel.anim-about{ animation: fadeIn .22s ease-out; }
+    .panel.anim-experience{ animation: slideUp .24s ease-out; }
+    .panel.anim-projects{ animation: popIn .22s ease-out; }
+    .panel.anim-contact{ animation: fadeIn .22s ease-out; }
+
+    @keyframes fadeIn{
+      from{ opacity:0; transform: translateY(8px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    @keyframes slideUp{
+      from{ opacity:0; transform: translateY(14px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    @keyframes popIn{
+      from{ opacity:0; transform: scale(.985); }
+      to{ opacity:1; transform: scale(1); }
+    }
 
     /* FOOTER */
     footer{
       position:fixed;
       bottom:12px;
-      left:0;right:0;
+      left:0; right:0;
       text-align:center;
       font-size:.95rem;
       color:#ffffff;
-      opacity:.9;
+      opacity:.92;
+      pointer-events:none;
     }
 
     /* MOBILE */
-    @media(max-width:900px){
-      .screen{
-        justify-content:center;
-      }
-      .stage{
-        margin-left:0;
-      }
+    @media (max-width: 980px){
+      .screen{ justify-content:center; }
+      .stage{ margin-left:0; }
       .hero{
         flex-direction:column;
         text-align:center;
+        gap:16px;
       }
-      .line{
-        margin-left:auto;
-        margin-right:auto;
-      }
-      .avatar{
-        width:200px;
-        height:200px;
-      }
+      .hero-text{ padding-left: 0; } /* centered on mobile */
+      .line{ margin-left:auto; margin-right:auto; }
+      .avatar{ width:210px; height:210px; }
+    }
+
+    @media (max-width: 600px){
+      header{ padding: 12px 10px; }
+      nav{ gap: 12px; }
+      .screen{ padding-top: 84px; }
+      .panel{ max-height: 62vh; padding: 22px; }
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <nav>
+      <a data-view="home" class="active">Home</a>
+      <a data-view="about">About</a>
+      <a data-view="experience">Experience</a>
+      <a data-view="projects">Projects</a>
+      <a data-view="contact">Contact</a>
+    </nav>
+  </header>
 
-<header>
-  <nav>
-    <a data-view="home" class="active">Home</a>
-    <a data-view="about">About</a>
-    <a data-view="experience">Experience</a>
-    <a data-view="projects">Projects</a>
-    <a data-view="contact">Contact</a>
-  </nav>
-</header>
+  <main class="screen">
+    <div class="stage">
+      <!-- HERO (front page) -->
+      <div id="homeView" class="view">
+        <div class="hero">
+          <img src="images/profile.jpg" alt="Veljko Dordevic" class="avatar" />
+          <div class="hero-text">
+            <h1>Veljko Dordevic</h1>
+            <div class="title">Cybersecurity Specialist</div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
 
-<main class="screen">
-  <div class="stage">
-
-    <!-- HERO -->
-    <div id="homeView" class="view">
-      <div class="hero">
-        <img src="images/profile.jpg" alt="Veljko Dordevic" class="avatar">
-        <div class="hero-text">
-          <h1>Veljko Dordevic</h1>
-          <div class="title">Cybersecurity Specialist</div>
-          <div class="line"></div>
+      <!-- CONTENT (centered) -->
+      <div id="contentView" class="view" style="display:none;">
+        <div id="panel" class="panel">
+          <h2 id="panelTitle"></h2>
+          <div id="panelBody"></div>
         </div>
       </div>
     </div>
+  </main>
 
-    <!-- CONTENT -->
-    <div id="contentView" class="view" style="display:none;">
-      <div class="panel">
-        <h2 id="panelTitle"></h2>
-        <div id="panelBody"></div>
-      </div>
-    </div>
+  <footer>© 2026 Veljko Dordevic</footer>
 
-  </div>
-</main>
+  <script>
+    const navLinks = document.querySelectorAll("nav a");
+    const homeView = document.getElementById("homeView");
+    const contentView = document.getElementById("contentView");
+    const panel = document.getElementById("panel");
+    const panelTitle = document.getElementById("panelTitle");
+    const panelBody = document.getElementById("panelBody");
 
-<footer>© 2026 Veljko Dordevic</footer>
-
-<script>
-  const navLinks = document.querySelectorAll("nav a");
-  const homeView = document.getElementById("homeView");
-  const contentView = document.getElementById("contentView");
-  const panelTitle = document.getElementById("panelTitle");
-  const panelBody = document.getElementById("panelBody");
-
-  const pages = {
-    about:{
-      title:"About",
-      body:`<p>Paste your About content here.</p>`
-    },
-    experience:{
-      title:"Experience",
-      body:`<ul>
-        <li>15+ years heavy equipment & fleet operations</li>
-        <li>Cybersecurity Specialist program</li>
-        <li>Strong troubleshooting & documentation skills</li>
-      </ul>`
-    },
-    projects:{
-      title:"Projects",
-      body:`<ul>
-        <li>Website-as-resume portfolio</li>
-        <li>Network design & security labs</li>
-      </ul>`
-    },
-    contact:{
-      title:"Contact",
-      body:`<p>Email: your@email.com<br>LinkedIn: linkedin.com/in/yourprofile</p>`
-    }
-  };
-
-  function setActive(link){
-    navLinks.forEach(a=>a.classList.remove("active"));
-    link.classList.add("active");
-  }
-
-  function fadeSwap(hide, show){
-    hide.classList.add("fade-out");
-    setTimeout(()=>{
-      hide.style.display="none";
-      hide.classList.remove("fade-out");
-      show.style.display="block";
-    },250);
-  }
-
-  navLinks.forEach(link=>{
-    link.addEventListener("click",()=>{
-      const view=link.dataset.view;
-      setActive(link);
-
-      if(view==="home"){
-        if(homeView.style.display!=="block"){
-          fadeSwap(contentView,homeView);
-        }
-      }else{
-        panelTitle.textContent=pages[view].title;
-        panelBody.innerHTML=pages[view].body;
-        if(contentView.style.display!=="block"){
-          fadeSwap(homeView,contentView);
-        }
+    const pages = {
+      about:{
+        title:"About",
+        body:`<p>Paste your About content here.</p>`,
+        anim:"anim-about"
+      },
+      experience:{
+        title:"Experience",
+        body:`<ul>
+          <li>15+ years heavy equipment & fleet operations</li>
+          <li>Cybersecurity Specialist program</li>
+          <li>Strong troubleshooting & documentation skills</li>
+        </ul>`,
+        anim:"anim-experience"
+      },
+      projects:{
+        title:"Projects",
+        body:`<ul>
+          <li>Website-as-resume portfolio</li>
+          <li>Network design & security labs</li>
+        </ul>`,
+        anim:"anim-projects"
+      },
+      contact:{
+        title:"Contact",
+        body:`<p>Email: your@email.com<br>LinkedIn: linkedin.com/in/yourprofile</p>`,
+        anim:"anim-contact"
       }
-    });
-  });
-</script>
+    };
 
+    function setActive(link){
+      navLinks.forEach(a=>a.classList.remove("active"));
+      link.classList.add("active");
+    }
+
+    function fadeSwap(hideEl, showEl){
+      hideEl.classList.add("fade-out");
+      setTimeout(()=>{
+        hideEl.style.display = "none";
+        hideEl.classList.remove("fade-out");
+        showEl.style.display = "block";
+      }, 250);
+    }
+
+    function showHome(){
+      if(homeView.style.display !== "none") return;
+      fadeSwap(contentView, homeView);
+    }
+
+    function showPage(key){
+      panelTitle.textContent = pages[key].title;
+      panelBody.innerHTML = pages[key].body;
+
+      // section-specific animation class
+      panel.className = "panel " + pages[key].anim;
+
+      if(contentView.style.display !== "none") return;
+      fadeSwap(homeView, contentView);
+    }
+
+    navLinks.forEach(link=>{
+      link.addEventListener("click", ()=>{
+        const view = link.dataset.view;
+        setActive(link);
+
+        if(view === "home") showHome();
+        else showPage(view);
+      });
+    });
+  </script>
 </body>
 </html>
