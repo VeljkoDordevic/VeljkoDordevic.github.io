@@ -21,7 +21,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
       line-height: 1.6;
-      background: url('Image (1).png') no-repeat center center fixed;
+      background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
     }
 
@@ -73,14 +73,33 @@
       color: #007acc;
     }
 
+    /* Show Content Button */
+    #show-btn {
+      display: block;
+      margin: 60px auto;
+      padding: 14px 22px;
+      font-size: 1.1em;
+      cursor: pointer;
+      border: none;
+      background-color: #007acc;
+      color: white;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    #show-btn:hover {
+      background-color: #00aaff;
+    }
+
     /* Container */
     .container {
       max-width: 900px;
-      margin: 60px auto 40px auto;
+      margin: 40px auto 40px auto;
       padding: 30px 25px;
       background: rgba(255, 255, 255, 0.95);
       border-radius: 12px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      display: none; /* hidden at first */
     }
 
     h1 {
@@ -217,10 +236,14 @@
     </div>
   </nav>
 
+  <!-- Show Content Button -->
+  <button id="show-btn">Show My Resume</button>
+
+  <!-- Main Content -->
   <div class="container">
     <!-- Header -->
     <div class="header-top">
-      <img src="Veljko 2.png" alt="Veljko Dordevic" class="profile-pic">
+      <img src="profile.jpg" alt="Veljko Dordevic" class="profile-pic">
       <h1>Veljko Dordevic</h1>
     </div>
     <p class="tagline">
@@ -330,12 +353,23 @@
     </div>
   </div>
 
-  <!-- Hamburger Menu Script -->
+  <!-- Scripts -->
   <script>
+    // Hamburger menu toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('show');
+    });
+
+    // Show content button
+    const btn = document.getElementById('show-btn');
+    const container = document.querySelector('.container');
+
+    btn.addEventListener('click', () => {
+      container.style.display = 'block'; // reveal content
+      btn.style.display = 'none';        // hide the button
+      container.scrollIntoView({behavior: "smooth"});
     });
   </script>
 
