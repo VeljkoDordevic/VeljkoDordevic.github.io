@@ -2,345 +2,183 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Veljko Dordevic | Cybersecurity Specialist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veljko Dordevic</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* Reset */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #333;
-      line-height: 1.6;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #2a2a2a, #0f0f0f);
+      color: #ffffff;
     }
 
-    /* Navigation Bar */
-    .navbar {
-      position: sticky;
+    /* NAVBAR */
+    header {
+      position: fixed;
       top: 0;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 100%;
+      padding: 18px 0;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
       z-index: 1000;
     }
 
-    .nav-container {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 25px;
-    }
-
-    .nav-logo {
-      font-weight: bold;
-      font-size: 1.2em;
-      color: #006699;
-    }
-
-    .nav-links {
+    nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      justify-content: center;
+      gap: 36px;
     }
 
-    .nav-links li a {
+    nav a {
+      cursor: pointer;
       text-decoration: none;
-      color: #007acc;
-      font-weight: 500;
+      color: #cfcfcf;
       transition: color 0.3s;
-      cursor: pointer;
     }
 
-    .nav-links li a:hover {
-      color: #00aaff;
+    nav a:hover {
+      color: #ffffff;
     }
 
-    .hamburger {
+    /* SECTIONS */
+    section {
+      min-height: 100vh;
+      padding: 120px 20px 40px;
       display: none;
-      font-size: 1.8em;
-      cursor: pointer;
-      color: #007acc;
-    }
-
-    /* Container */
-    .container {
-      max-width: 900px;
-      margin: 40px auto 40px auto;
-      padding: 30px 25px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      display: none; /* hidden at first */
-    }
-
-    h1 {
-      font-size: 2.5em;
-      color: #1a1a1a;
-    }
-
-    .tagline {
-      color: #555;
-      font-size: 1.2em;
-      margin-bottom: 25px;
-    }
-
-    h2 {
-      margin-top: 40px;
-      margin-bottom: 15px;
-      border-bottom: 3px solid #00aaff;
-      padding-bottom: 5px;
-      color: #006699;
-    }
-
-    h3 {
-      margin-bottom: 5px;
-      color: #333;
-    }
-
-    p {
-      font-size: 1.05em;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      margin-left: 20px;
-      margin-bottom: 15px;
-    }
-
-    li {
-      margin-bottom: 5px;
-    }
-
-    .experience-item, .project-item {
-      margin-bottom: 25px;
-      padding: 10px 15px;
-      border-left: 4px solid #00aaff;
-      background-color: #f9fbfc;
-      border-radius: 6px;
-    }
-
-    .footer {
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #777;
       text-align: center;
     }
 
-    /* Header with profile picture */
-    .header-top {
+    section.active {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 20px;
-      margin-bottom: 15px;
+      justify-content: center;
     }
 
-    .profile-pic {
-      width: 80px;
-      height: 80px;
+    /* HERO */
+    .profile-img {
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #00aaff;
+      margin-bottom: 24px;
+      border: 3px solid rgba(255,255,255,0.2);
     }
 
-    /* Responsive */
-    @media (max-width: 700px) {
-      .nav-links {
-        flex-direction: column;
-        display: none;
-        width: 100%;
-        background-color: #fff;
-        position: absolute;
-        top: 55px;
-        left: 0;
-        border-top: 1px solid #ddd;
-      }
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+    }
 
-      .nav-links li {
-        text-align: center;
-        padding: 12px 0;
-        border-bottom: 1px solid #eee;
-      }
+    .title {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #b5b5b5;
+    }
 
-      .nav-links li:last-child {
-        border-bottom: none;
-      }
+    /* CONTENT */
+    .content {
+      max-width: 800px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #d0d0d0;
+    }
 
-      .nav-links.show {
-        display: flex;
-      }
-
-      .hamburger {
-        display: block;
-      }
-
-      .container {
-        padding: 20px 15px;
-        margin-top: 40px;
-      }
-
-      h1 {
-        font-size: 2em;
-      }
-
-      .header-top {
-        flex-direction: column;
-        gap: 10px;
-      }
+    /* MOBILE */
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      .profile-img { width: 150px; height: 150px; }
+      nav ul { gap: 20px; }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <span class="nav-logo">Veljko Dordevic</span>
-      <span class="hamburger" id="hamburger">&#9776;</span>
-      <ul class="nav-links" id="nav-links">
-        <li><a onclick="showSection('about')">About</a></li>
-        <li><a onclick="showSection('skills')">Skills</a></li>
-        <li><a onclick="showSection('experience')">Experience</a></li>
-        <li><a onclick="showSection('projects')">Projects</a></li>
-        <li><a onclick="showSection('contact')">Contact</a></li>
-      </ul>
-    </div>
+<header>
+  <nav>
+    <ul>
+      <li><a onclick="showSection('home')">Home</a></li>
+      <li><a onclick="showSection('about')">About</a></li>
+      <li><a onclick="showSection('experience')">Experience</a></li>
+      <li><a onclick="showSection('projects')">Projects</a></li>
+      <li><a onclick="showSection('contact')">Contact</a></li>
+    </ul>
   </nav>
+</header>
 
-  <!-- Sections -->
-  <div id="section-about" class="container">
-    <div class="header-top">
-      <img src="profile.jpg" alt="Veljko Dordevic" class="profile-pic">
-      <h1>Veljko Dordevic</h1>
-    </div>
-    <p class="tagline">Cybersecurity Specialist | Former Heavy Equipment & Fleet Operations Professional</p>
-    <h2>About Me</h2>
+<!-- HOME -->
+<section id="home" class="active">
+  <img src="images/profile.jpg" alt="Veljko Dordevic" class="profile-img">
+  <h1>Veljko Dordevic</h1>
+  <p class="title">Cybersecurity Specialist</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="content">
+    <h1>About Me</h1>
     <p>
-      I am a Cybersecurity Specialist transitioning from over 15 years in heavy equipment and fleet operations. My background has given me a strong safety mindset, attention to detail, and the ability to troubleshoot problems under pressure. I am skilled in networking, system security, and threat awareness, and I am ready to apply real-world discipline to IT and security environments.
+      I am a cybersecurity-focused professional transitioning from a heavy
+      equipment and fleet operations background into IT and security.
+      Currently completing my Cybersecurity Specialist program, with strong
+      foundations in networking, system security, and threat awareness.
     </p>
   </div>
+</section>
 
-  <div id="section-skills" class="container">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>Security Tools: Wireshark, Nmap, Metasploit, Nessus (Basic)</li>
-      <li>Systems: Windows OS, Linux (Kali, Ubuntu), Windows Server</li>
-      <li>Networking: TCP/IP, DNS, VPNs, OSI Model, VLANs, Network Hardening</li>
-      <li>Scripting / Automation: Bash (basic), Python (basic)</li>
-      <li>Virtualization: VMware, VirtualBox</li>
-      <li>Cloud & Server: Azure (Cloud+), Server+ fundamentals</li>
-      <li>Other: Strong documentation, process monitoring, asset management</li>
-    </ul>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="content">
+    <h1>Experience</h1>
+    <p>
+      15+ years in heavy equipment, logistics, and fleet operations.
+      Strong hands-on troubleshooting, safety compliance, system monitoring,
+      and operational discipline — now applied to cybersecurity environments.
+    </p>
   </div>
+</section>
 
-  <div id="section-experience" class="container">
-    <h2>Experience</h2>
-    <div class="experience-item">
-      <h3>Logistics Coordinator / Equipment Operator</h3>
-      <p><strong>Flint Corp – Suncor Fort Hills Mine, AB | May 2018 – Jan 2023</strong></p>
-      <ul>
-        <li>Managed complex operations with high responsibility, safety awareness, and attention to detail.</li>
-        <li>Coordinated logistics, schedules, and equipment maintenance under strict deadlines.</li>
-        <li>Developed problem-solving skills and operational discipline transferable to IT and cybersecurity tasks.</li>
-      </ul>
-    </div>
-    <div class="experience-item">
-      <h3>Heavy Equipment Operator (Co-op)</h3>
-      <p><strong>Syncrude – Aurora North Mine, AB | 2017 – 2018</strong></p>
-      <ul>
-        <li>Operated heavy machinery in a high-pressure, safety-critical environment.</li>
-        <li>Documented processes and monitored system performance for efficiency and safety.</li>
-      </ul>
-    </div>
-    <div class="experience-item">
-      <h3>Frac Acid Operator / QC</h3>
-      <p><strong>Halliburton Energy Service – Grande Prairie, AB | 2012 – 2017</strong></p>
-      <ul>
-        <li>Performed quality control, risk management, and compliance checks in operational processes.</li>
-        <li>Developed attention to detail and analytical skills directly applicable to cybersecurity monitoring and analysis.</li>
-      </ul>
-    </div>
-    <div class="experience-item">
-      <h3>Cybersecurity Practicum Experience</h3>
-      <p><strong>GLOCAL Foundation of Canada | Dec 2025 – Jan 2026</strong></p>
-      <ul>
-        <li>Conducted research on Canada’s cybersecurity ecosystem, including government agencies and public awareness initiatives.</li>
-        <li>Analyzed responses to modern threats such as phishing, AI-driven scams, and misinformation.</li>
-        <li>Produced professional research briefs and infographics for non-technical audiences.</li>
-        <li>Translated complex cybersecurity topics into clear, actionable recommendations for public awareness and youth engagement.</li>
-      </ul>
-    </div>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="content">
+    <h1>Projects</h1>
+    <p>
+      Network design projects, IP addressing schemes, routing protocol
+      selection, and security hardening labs completed during cybersecurity
+      training.
+    </p>
   </div>
+</section>
 
-  <div id="section-projects" class="container">
-    <h2>Projects & Labs</h2>
-    <div class="project-item">
-      <h3>SOC Monitoring Simulation – CDI College</h3>
-      <ul>
-        <li>Used Wireshark and Splunk to analyze simulated network traffic and identify threats.</li>
-        <li>Documented incident response workflows and escalated findings as mock Tier 1 analyst.</li>
-      </ul>
-    </div>
-    <div class="project-item">
-      <h3>Vulnerability Scan & Hardening Lab</h3>
-      <ul>
-        <li>Scanned Windows VM with Nessus and Nmap; documented open ports, CVEs, and patch strategy.</li>
-        <li>Implemented system hardening via firewall, group policies, and service disabling.</li>
-      </ul>
-    </div>
-    <div class="project-item">
-      <h3>Linux Security & User Management</h3>
-      <ul>
-        <li>Configured secure user access, sudo roles, SSH keys, and iptables rules for system hardening.</li>
-        <li>Conducted file permissions audit using shell scripting basics.</li>
-      </ul>
-    </div>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="content">
+    <h1>Contact</h1>
+    <p>
+      Email: your@email.com<br>
+      LinkedIn: linkedin.com/in/yourprofile
+    </p>
   </div>
+</section>
 
-  <div id="section-contact" class="container">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:veljko.dordevic.cs@gmail.com">veljko.dordevic.cs@gmail.com</a></p>
-  </div>
-
-  <div class="footer">
-    © 2026 Veljko Dordevic
-  </div>
-
-  <!-- Scripts -->
-  <script>
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(sec => {
+      sec.classList.remove('active');
     });
-
-    // Show only selected section
-    function showSection(section) {
-      const sections = ['about','skills','experience','projects','contact'];
-      sections.forEach(sec => {
-        const el = document.getElementById('section-' + sec);
-        if(sec === section){
-          el.style.display = 'block';
-          el.scrollIntoView({behavior: "smooth"});
-        } else {
-          el.style.display = 'none';
-        }
-      });
-    }
-  </script>
+    document.getElementById(id).classList.add('active');
+  }
+</script>
 
 </body>
 </html>
