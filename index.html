@@ -136,40 +136,121 @@
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="content">
-    <h1>Experience</h1>
-    <p>
-      15+ years in heavy equipment, logistics, and fleet operations.
-      Strong hands-on troubleshooting, safety compliance, system monitoring,
-      and operational discipline — now applied to cybersecurity environments.
-    </p>
-  </div>
-</section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="content">
-    <h1>Projects</h1>
-    <p>
-      Network design projects, IP addressing schemes, routing protocol
-      selection, and security hardening labs completed during cybersecurity
-      training.
-    </p>
-  </div>
-</section>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <span class="nav-logo">Veljko Dordevic</span>
+      <span class="hamburger" id="hamburger">&#9776;</span>
+      <ul class="nav-links" id="nav-links">
+        <li><a onclick="showSection('about')">About</a></li>
+        <li><a onclick="showSection('skills')">Skills</a></li>
+        <li><a onclick="showSection('experience')">Experience</a></li>
+        <li><a onclick="showSection('projects')">Projects</a></li>
+        <li><a onclick="showSection('contact')">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="content">
-    <h1>Contact</h1>
+  <!-- Sections -->
+  <div id="section-about" class="container">
+    <div class="header-top">
+      <img src="profile.jpg" alt="Veljko Dordevic" class="profile-pic">
+      <h1>Veljko Dordevic</h1>
+    </div>
+    <p class="tagline">Cybersecurity Specialist | Former Heavy Equipment & Fleet Operations Professional</p>
+    <h2>About Me</h2>
     <p>
-      Email: your@email.com<br>
-      LinkedIn: linkedin.com/in/yourprofile
+      I am a Cybersecurity Specialist transitioning from over 15 years in heavy equipment and fleet operations. My background has given me a strong safety mindset, attention to detail, and the ability to troubleshoot problems under pressure. I am skilled in networking, system security, and threat awareness, and I am ready to apply real-world discipline to IT and security environments.
     </p>
   </div>
-</section>
+
+  <div id="section-skills" class="container">
+    <h2>Technical Skills</h2>
+    <ul>
+      <li>Security Tools: Wireshark, Nmap, Metasploit, Nessus (Basic)</li>
+      <li>Systems: Windows OS, Linux (Kali, Ubuntu), Windows Server</li>
+      <li>Networking: TCP/IP, DNS, VPNs, OSI Model, VLANs, Network Hardening</li>
+      <li>Scripting / Automation: Bash (basic), Python (basic)</li>
+      <li>Virtualization: VMware, VirtualBox</li>
+      <li>Cloud & Server: Azure (Cloud+), Server+ fundamentals</li>
+      <li>Other: Strong documentation, process monitoring, asset management</li>
+    </ul>
+  </div>
+
+  <div id="section-experience" class="container">
+    <h2>Experience</h2>
+    <div class="experience-item">
+      <h3>Logistics Coordinator / Equipment Operator</h3>
+      <p><strong>Flint Corp – Suncor Fort Hills Mine, AB | May 2018 – Jan 2023</strong></p>
+      <ul>
+        <li>Managed complex operations with high responsibility, safety awareness, and attention to detail.</li>
+        <li>Coordinated logistics, schedules, and equipment maintenance under strict deadlines.</li>
+        <li>Developed problem-solving skills and operational discipline transferable to IT and cybersecurity tasks.</li>
+      </ul>
+    </div>
+    <div class="experience-item">
+      <h3>Heavy Equipment Operator (Co-op)</h3>
+      <p><strong>Syncrude – Aurora North Mine, AB | 2017 – 2018</strong></p>
+      <ul>
+        <li>Operated heavy machinery in a high-pressure, safety-critical environment.</li>
+        <li>Documented processes and monitored system performance for efficiency and safety.</li>
+      </ul>
+    </div>
+    <div class="experience-item">
+      <h3>Frac Acid Operator / QC</h3>
+      <p><strong>Halliburton Energy Service – Grande Prairie, AB | 2012 – 2017</strong></p>
+      <ul>
+        <li>Performed quality control, risk management, and compliance checks in operational processes.</li>
+        <li>Developed attention to detail and analytical skills directly applicable to cybersecurity monitoring and analysis.</li>
+      </ul>
+    </div>
+    <div class="experience-item">
+      <h3>Cybersecurity Practicum Experience</h3>
+      <p><strong>GLOCAL Foundation of Canada | Dec 2025 – Jan 2026</strong></p>
+      <ul>
+        <li>Conducted research on Canada’s cybersecurity ecosystem, including government agencies and public awareness initiatives.</li>
+        <li>Analyzed responses to modern threats such as phishing, AI-driven scams, and misinformation.</li>
+        <li>Produced professional research briefs and infographics for non-technical audiences.</li>
+        <li>Translated complex cybersecurity topics into clear, actionable recommendations for public awareness and youth engagement.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="section-projects" class="container">
+    <h2>Projects & Labs</h2>
+    <div class="project-item">
+      <h3>SOC Monitoring Simulation – CDI College</h3>
+      <ul>
+        <li>Used Wireshark and Splunk to analyze simulated network traffic and identify threats.</li>
+        <li>Documented incident response workflows and escalated findings as mock Tier 1 analyst.</li>
+      </ul>
+    </div>
+    <div class="project-item">
+      <h3>Vulnerability Scan & Hardening Lab</h3>
+      <ul>
+        <li>Scanned Windows VM with Nessus and Nmap; documented open ports, CVEs, and patch strategy.</li>
+        <li>Implemented system hardening via firewall, group policies, and service disabling.</li>
+      </ul>
+    </div>
+    <div class="project-item">
+      <h3>Linux Security & User Management</h3>
+      <ul>
+        <li>Configured secure user access, sudo roles, SSH keys, and iptables rules for system hardening.</li>
+        <li>Conducted file permissions audit using shell scripting basics.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="section-contact" class="container">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:veljko.dordevic.cs@gmail.com">veljko.dordevic.cs@gmail.com</a></p>
+  </div>
+
+  <div class="footer">
+    © 2026 Veljko Dordevic
+  </div>
+
 
 <script>
   function showSection(id) {
