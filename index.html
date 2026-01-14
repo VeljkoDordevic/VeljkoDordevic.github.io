@@ -4,120 +4,213 @@
   <meta charset="UTF-8">
   <title>Veljko Dordevic | Cybersecurity Specialist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+
   <style>
-  /* Reset some default styles */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #eef2f5;
-    color: #333;
-    line-height: 1.6;
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  .container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px 25px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f5;
+      color: #333;
+      line-height: 1.6;
+    }
 
-  h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    color: #1a1a1a;
-  }
+    /* Navigation Bar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
 
-  .tagline {
-    color: #555;
-    font-size: 1.2em;
-    margin-bottom: 25px;
-  }
+    .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 25px;
+    }
 
-  h2 {
-    margin-top: 40px;
-    margin-bottom: 15px;
-    border-bottom: 3px solid #00aaff;
-    padding-bottom: 5px;
-    color: #006699;
-  }
+    .nav-logo {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #006699;
+    }
 
-  h3 {
-    margin-bottom: 5px;
-    color: #333;
-  }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
 
-  p {
-    font-size: 1.05em;
-    margin-bottom: 10px;
-  }
+    .nav-links li a {
+      text-decoration: none;
+      color: #007acc;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
 
-  ul {
-    margin-left: 20px;
-    margin-bottom: 15px;
-  }
+    .nav-links li a:hover {
+      color: #00aaff;
+    }
 
-  li {
-    margin-bottom: 5px;
-  }
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      font-size: 1.8em;
+      cursor: pointer;
+      color: #007acc;
+    }
 
-  a {
-    color: #007acc;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  .experience-item, .project-item {
-    margin-bottom: 25px;
-    padding: 10px 15px;
-    border-left: 4px solid #00aaff;
-    background-color: #f9fbfc;
-    border-radius: 6px;
-  }
-
-  .footer {
-    margin-top: 50px;
-    font-size: 0.9em;
-    color: #777;
-    text-align: center;
-  }
-
-  /* Responsive for mobile */
-  @media (max-width: 600px) {
+    /* Container */
     .container {
-      padding: 20px 15px;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px 25px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     }
+
     h1 {
-      font-size: 2em;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #1a1a1a;
     }
-  }
-</style>
-  
+
+    .tagline {
+      color: #555;
+      font-size: 1.2em;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #00aaff;
+      padding-bottom: 5px;
+      color: #006699;
+    }
+
+    h3 {
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    p {
+      font-size: 1.05em;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+
+    .experience-item, .project-item {
+      margin-bottom: 25px;
+      padding: 10px 15px;
+      border-left: 4px solid #00aaff;
+      background-color: #f9fbfc;
+      border-radius: 6px;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #777;
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .nav-links {
+        flex-direction: column;
+        display: none;
+        width: 100%;
+        background-color: #fff;
+        position: absolute;
+        top: 55px;
+        left: 0;
+        border-top: 1px solid #ddd;
+      }
+
+      .nav-links li {
+        text-align: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .nav-links li:last-child {
+        border-bottom: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .container {
+        padding: 20px 15px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+    }
+  </style>
 </head>
 
 <body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <span class="nav-logo">Veljko Dordevic</span>
+      <span class="hamburger" id="hamburger">&#9776;</span>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div class="container">
+    <!-- Header -->
     <h1>Veljko Dordevic</h1>
     <p class="tagline">
       Cybersecurity Specialist | Former Heavy Equipment & Fleet Operations Professional
     </p>
 
-    <h2>About Me</h2>
+    <!-- About Me -->
+    <h2 id="about">About Me</h2>
     <p>
       I am a Cybersecurity Specialist transitioning from over 15 years in heavy equipment and fleet operations. My background has given me a strong safety mindset, attention to detail, and the ability to troubleshoot problems under pressure. I am skilled in networking, system security, and threat awareness, and I am ready to apply real-world discipline to IT and security environments.
     </p>
 
-    <h2>Technical Skills</h2>
+    <!-- Technical Skills -->
+    <h2 id="skills">Technical Skills</h2>
     <ul>
       <li>Security Tools: Wireshark, Nmap, Metasploit, Nessus (Basic)</li>
       <li>Systems: Windows OS, Linux (Kali, Ubuntu), Windows Server</li>
@@ -128,19 +221,9 @@
       <li>Other: Strong documentation, process monitoring, asset management</li>
     </ul>
 
-    <h2>Experience</h2>
+    <!-- Experience -->
+    <h2 id="experience">Experience</h2>
 
-        <div class="experience-item">
-      <h3>Cybersecurity Practicum Experience</h3>
-      <p><strong>GLOCAL Foundation of Canada | Dec 2025 – Jan 2026</strong></p>
-      <ul>
-        <li>Conducted research on Canada’s cybersecurity ecosystem, including government agencies and public awareness initiatives.</li>
-        <li>Analyzed responses to modern threats such as phishing, AI-driven scams, and misinformation.</li>
-        <li>Produced professional research briefs and infographics for non-technical audiences.</li>
-        <li>Translated complex cybersecurity topics into clear, actionable recommendations for public awareness and youth engagement.</li>
-      </ul>
-    </div>
-    
     <div class="experience-item">
       <h3>Logistics Coordinator / Equipment Operator</h3>
       <p><strong>Flint Corp – Suncor Fort Hills Mine, AB | May 2018 – Jan 2023</strong></p>
@@ -169,7 +252,19 @@
       </ul>
     </div>
 
-    <h2>Projects & Labs</h2>
+    <div class="experience-item">
+      <h3>Cybersecurity Practicum Experience</h3>
+      <p><strong>GLOCAL Foundation of Canada | Dec 2025 – Jan 2026</strong></p>
+      <ul>
+        <li>Conducted research on Canada’s cybersecurity ecosystem, including government agencies and public awareness initiatives.</li>
+        <li>Analyzed responses to modern threats such as phishing, AI-driven scams, and misinformation.</li>
+        <li>Produced professional research briefs and infographics for non-technical audiences.</li>
+        <li>Translated complex cybersecurity topics into clear, actionable recommendations for public awareness and youth engagement.</li>
+      </ul>
+    </div>
+
+    <!-- Projects -->
+    <h2 id="projects">Projects & Labs</h2>
 
     <div class="project-item">
       <h3>SOC Monitoring Simulation – CDI College</h3>
@@ -195,11 +290,13 @@
       </ul>
     </div>
 
+    <!-- Education -->
     <h2>Education & Training</h2>
     <p><strong>Cybersecurity Specialist - Diploma</strong><br>
     CDI College – Calgary, AB | July 2024 – December 2025</p>
 
-    <h2>Contact</h2>
+    <!-- Contact -->
+    <h2 id="contact">Contact</h2>
     <p>
       Email: <a href="mailto:veljko.dordevic.cs@gmail.com">veljko.dordevic.cs@gmail.com</a>
     </p>
@@ -208,5 +305,16 @@
       © 2026 Veljko Dordevic
     </div>
   </div>
+
+  <!-- Hamburger Menu Script -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+
 </body>
 </html>
