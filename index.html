@@ -5,238 +5,305 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Veljko Dordevic | Cybersecurity Specialist</title>
 
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --text:#fff;
-      --muted: rgba(255,255,255,.80);
-      --nav: rgba(0,0,0,.25);
-      --navBorder: rgba(255,255,255,.10);
+      --bg1:#0b0c0f;
+      --bg2:#14161b;
+      --text:#ffffff;
+      --muted: rgba(255,255,255,.75);
+
+      /* Glass card */
+      --glass: rgba(255,255,255,.06);
+      --glass-border: rgba(255,255,255,.14);
+      --shadow: rgba(0,0,0,.55);
+
+      /* Accent (subtle, can be changed later) */
+      --accent: rgba(255,255,255,.22);
     }
 
-    *{margin:0;padding:0;box-sizing:border-box;}
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; }
     body{
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:#06121b;
-      color:var(--text);
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 20% 20%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(700px 450px at 80% 30%, rgba(255,255,255,.04), transparent 55%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow: hidden; /* IMPORTANT: no scrolling */
     }
 
-    /* NAVBAR */
+    /* ===== NAVBAR ===== */
     header{
-      position:fixed;
-      top:0; left:0; right:0;
-      z-index:999;
-      padding:14px 18px;
-      background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.10));
-      backdrop-filter: blur(10px);
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-
-    nav{
-      max-width:1200px;
-      margin:0 auto;
-      display:flex;
-      justify-content:center;
-      gap:28px;
-      flex-wrap:wrap;
-    }
-
-    nav a{
-      color: rgba(255,255,255,.78);
-      text-decoration:none;
-      font-weight:400;
-      font-size:0.95rem;
-      padding:8px 10px;
-      border-radius:10px;
-      transition: background .2s ease, color .2s ease;
-    }
-    nav a:hover{
-      color:#fff;
-      background: rgba(255,255,255,.07);
-    }
-
-    /* HERO (EXACT BACKGROUND IMAGE) */
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding-top:72px; /* space for navbar */
-    }
-
-    .hero-banner{
-      width:min(1400px, 96vw);
-      aspect-ratio: 16 / 9; /* makes it look like your screenshot */
-      position:relative;
-      border-radius:0; /* your image is a rectangle */
-      overflow:hidden;
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
-      background: #000;
-    }
-
-    /* The banner image itself */
-    .hero-banner::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: url("images/hero.png") center/cover no-repeat;
-    }
-
-    /* OPTIONAL: small dark overlay so text always looks crisp */
-    .hero-banner::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(circle at 35% 50%, rgba(0,0,0,.00), rgba(0,0,0,.28));
-      pointer-events:none;
-    }
-
-    /* Overlay content positioned like your picture */
-    .overlay{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      gap:48px;
-      padding-left: clamp(20px, 4vw, 60px);
-      padding-right: clamp(20px, 4vw, 60px);
-    }
-
-    .avatar{
-      width: clamp(150px, 18vw, 250px);
-      height: clamp(150px, 18vw, 250px);
-      border-radius:50%;
-      object-fit:cover;
-      border: 6px solid rgba(255,255,255,.15);
-      box-shadow: 0 18px 50px rgba(0,0,0,.55);
-      background:#111;
-      flex:0 0 auto;
-    }
-
-    .text{
-      max-width: 760px;
-    }
-
-    .name{
-      font-size: clamp(2rem, 4vw, 4rem);
-      font-weight:600;
-      letter-spacing:.3px;
-      line-height:1.05;
-    }
-
-    .role{
-      margin-top: 14px;
-      font-size: clamp(1.2rem, 2.2vw, 2.4rem);
-      font-weight:300;
-      color: rgba(255,255,255,.82);
-    }
-
-    /* underline accent like your pic */
-    .line{
-      margin-top: 22px;
-      width: min(420px, 70%);
-      height: 2px;
-      background: rgba(18,214,255,.55);
-      filter: drop-shadow(0 0 10px rgba(18,214,255,.25));
-      opacity:.8;
-    }
-
-    /* Sections below (optional) */
-    .section{
-      max-width:1100px;
-      margin: 0 auto;
-      padding: 60px 18px 0;
-    }
-
-    .card{
-      border: 1px solid rgba(255,255,255,.10);
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 14px 18px;
       background: rgba(0,0,0,.25);
+      border-bottom: 1px solid rgba(255,255,255,.07);
       backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 22px;
-      color: rgba(255,255,255,.85);
+    }
+
+    .nav{
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+
+    .nav a{
+      cursor: pointer;
+      color: rgba(255,255,255,.78);
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.95rem;
+      padding: 8px 10px;
+      border-radius: 12px;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+      user-select: none;
+    }
+
+    .nav a:hover{
+      background: rgba(255,255,255,.07);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .nav a.active{
+      background: rgba(255,255,255,.10);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    /* ===== PAGE LAYOUT (one screen) ===== */
+    .screen{
+      height: 100vh;
+      width: 100vw;
+      padding-top: 72px; /* space for navbar */
+      display: grid;
+      place-items: center;
+    }
+
+    .wrap{
+      width: min(980px, 92vw);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 18px;
+    }
+
+    /* ===== HERO ===== */
+    .avatar{
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 50px var(--shadow);
+      background: rgba(0,0,0,.35);
+    }
+
+    h1{
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      font-weight: 600;
+      letter-spacing: .4px;
+      text-shadow: 0 10px 26px rgba(0,0,0,.45);
+    }
+
+    .title{
+      font-size: clamp(1.05rem, 1.8vw, 1.5rem);
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .line{
+      width: min(420px, 78%);
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin-top: 6px;
+    }
+
+    /* ===== GLASS INFO CARD (hidden until click) ===== */
+    .card{
+      width: min(820px, 92vw);
+      margin-top: 14px;
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      backdrop-filter: blur(14px);
+      display: none;              /* hidden by default */
+      max-height: 36vh;           /* keeps it one-screen */
+      overflow: auto;             /* if content is long, it scrolls inside the card only */
+    }
+
+    .card.show{
+      display: block;
+      animation: fadeUp .18s ease-out;
+    }
+
+    @keyframes fadeUp{
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .card h2{
-      font-size: 1.2rem;
+      font-size: 1.15rem;
+      font-weight: 600;
       margin-bottom: 10px;
-      font-weight:600;
-      color:#fff;
+      color: #fff;
+      text-align: left;
     }
 
     .card p{
-      line-height:1.7;
-      color: rgba(255,255,255,.72);
+      color: rgba(255,255,255,.78);
+      line-height: 1.65;
+      font-size: 0.98rem;
+      text-align: left;
     }
 
-    /* Responsive: stack on small screens */
-    @media (max-width: 900px){
-      .hero-banner{ aspect-ratio: 4 / 3; }
-      .overlay{
-        flex-direction:column;
-        justify-content:center;
-        text-align:center;
-        gap:18px;
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-      .line{ margin-left:auto; margin-right:auto; }
+    .card ul{
+      margin: 8px 0 0 18px;
+      color: rgba(255,255,255,.78);
+      line-height: 1.65;
+      text-align: left;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 600px){
+      header{ padding: 12px 10px; }
+      .nav{ gap: 12px; }
+      .avatar{ width: 150px; height: 150px; }
+      .card{ max-height: 40vh; }
     }
   </style>
 </head>
 
 <body>
+  <!-- NAVBAR -->
   <header>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a data-section="home" class="active">Home</a>
+      <a data-section="about">About</a>
+      <a data-section="experience">Experience</a>
+      <a data-section="projects">Projects</a>
+      <a data-section="contact">Contact</a>
     </nav>
   </header>
 
-  <section id="home" class="hero">
-    <div class="hero-banner">
-      <div class="overlay">
-        <img class="avatar" src="images/profile.jpg" alt="Veljko Dordevic" />
-
-        <div class="text">
-          <div class="name">Veljko Dordevic</div>
-          <div class="role">Cybersecurity Specialist</div>
-          <div class="line"></div>
-        </div>
+  <!-- ONE SCREEN -->
+  <main class="screen">
+    <div class="wrap">
+      <!-- HERO: photo + name + title -->
+      <img class="avatar" src="images/profile.jpg" alt="Veljko Dordevic" />
+      <div>
+        <h1>Veljko Dordevic</h1>
+        <div class="title">Cybersecurity Specialist</div>
+        <div class="line"></div>
       </div>
-    </div>
-  </section>
 
-  <div id="about" class="section">
-    <div class="card">
-      <h2>About</h2>
-      <p>Paste your existing About text here.</p>
+      <!-- GLASS INFO CARD (hidden until buttons) -->
+      <section id="infoCard" class="card" aria-live="polite">
+        <h2 id="cardTitle">Title</h2>
+        <div id="cardBody"></div>
+      </section>
     </div>
-  </div>
+  </main>
 
-  <div id="experience" class="section">
-    <div class="card">
-      <h2>Experience</h2>
-      <p>Paste your existing Experience text here.</p>
-    </div>
-  </div>
+  <script>
+    // Content (edit these anytime)
+    const content = {
+      home: {
+        title: "",
+        body: ""
+      },
+      about: {
+        title: "About",
+        body: `
+          <p>
+            Paste your About text here. Keep it short so it fits on one screen.
+            (If it’s long, it will scroll INSIDE this card only.)
+          </p>
+        `
+      },
+      experience: {
+        title: "Experience",
+        body: `
+          <p>
+            Paste your experience here. Example:
+          </p>
+          <ul>
+            <li>15+ years heavy equipment / fleet operations (transferable troubleshooting & safety discipline)</li>
+            <li>Transitioning into cybersecurity with hands-on networking and security labs</li>
+            <li>Strong focus on documentation, procedures, and incident awareness</li>
+          </ul>
+        `
+      },
+      projects: {
+        title: "Projects",
+        body: `
+          <p>
+            Add your cybersecurity or networking projects here. Example:
+          </p>
+          <ul>
+            <li>Network design & IP addressing (multi-site office)</li>
+            <li>Basic SOC-style monitoring labs and security hardening</li>
+            <li>Website-as-resume portfolio build</li>
+          </ul>
+        `
+      },
+      contact: {
+        title: "Contact",
+        body: `
+          <p>
+            Email: your@email.com<br>
+            LinkedIn: linkedin.com/in/yourprofile
+          </p>
+        `
+      }
+    };
 
-  <div id="projects" class="section">
-    <div class="card">
-      <h2>Projects</h2>
-      <p>Paste your existing Projects text here.</p>
-    </div>
-  </div>
+    const links = document.querySelectorAll(".nav a");
+    const card = document.getElementById("infoCard");
+    const cardTitle = document.getElementById("cardTitle");
+    const cardBody = document.getElementById("cardBody");
 
-  <div id="contact" class="section" style="padding-bottom:70px;">
-    <div class="card">
-      <h2>Contact</h2>
-      <p>Email: your@email.com<br>LinkedIn: linkedin.com/in/yourprofile</p>
-    </div>
-  </div>
+    function setActive(link){
+      links.forEach(a => a.classList.remove("active"));
+      link.classList.add("active");
+    }
+
+    function show(section){
+      if(section === "home"){
+        card.classList.remove("show");
+        cardTitle.textContent = "";
+        cardBody.innerHTML = "";
+        return;
+      }
+      cardTitle.textContent = content[section].title;
+      cardBody.innerHTML = content[section].body;
+      card.classList.add("show");
+    }
+
+    links.forEach(a => {
+      a.addEventListener("click", () => {
+        const section = a.getAttribute("data-section");
+        setActive(a);
+        show(section);
+      });
+    });
+
+    // Start on Home (no card visible)
+    show("home");
+  </script>
 </body>
 </html>
