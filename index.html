@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Veljko Dordevic | Cybersecurity Specialist</title>
 
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -13,251 +12,284 @@
       --bg1:#0b0c0f;
       --bg2:#14161b;
       --text:#ffffff;
-      --muted: rgba(255,255,255,.75);
+      --muted:rgba(255,255,255,.75);
 
-      /* Glass card */
+      /* centered content card */
       --glass: rgba(255,255,255,.06);
       --glass-border: rgba(255,255,255,.14);
       --shadow: rgba(0,0,0,.55);
-
-      /* Accent (subtle, can be changed later) */
-      --accent: rgba(255,255,255,.22);
     }
 
     *{ margin:0; padding:0; box-sizing:border-box; }
-    html, body { height:100%; }
+    html, body{ height:100%; }
     body{
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:
         radial-gradient(900px 500px at 20% 20%, rgba(255,255,255,.06), transparent 60%),
         radial-gradient(700px 450px at 80% 30%, rgba(255,255,255,.04), transparent 55%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
-      overflow: hidden; /* IMPORTANT: no scrolling */
+      color:var(--text);
+      overflow:hidden; /* NO PAGE SCROLL */
     }
 
-    /* ===== NAVBAR ===== */
+    /* NAVBAR */
     header{
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 14px 18px;
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:1000;
+      padding:14px 18px;
       background: rgba(0,0,0,.25);
       border-bottom: 1px solid rgba(255,255,255,.07);
       backdrop-filter: blur(10px);
     }
 
-    .nav{
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 26px;
-      flex-wrap: wrap;
+    nav{
+      max-width:1100px;
+      margin:0 auto;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:26px;
+      flex-wrap:wrap;
     }
 
-    .nav a{
-      cursor: pointer;
-      color: rgba(255,255,255,.78);
-      text-decoration: none;
-      font-weight: 400;
-      font-size: 0.95rem;
-      padding: 8px 10px;
-      border-radius: 12px;
+    nav a{
+      cursor:pointer;
+      user-select:none;
+      text-decoration:none;
+      color:rgba(255,255,255,.78);
+      font-weight:400;
+      font-size:0.98rem;
+      padding:8px 10px;
+      border-radius:12px;
       transition: background .2s ease, color .2s ease, transform .2s ease;
-      user-select: none;
     }
-
-    .nav a:hover{
+    nav a:hover{
       background: rgba(255,255,255,.07);
-      color: #fff;
+      color:#fff;
       transform: translateY(-1px);
     }
-
-    .nav a.active{
+    nav a.active{
       background: rgba(255,255,255,.10);
-      color: #fff;
+      color:#fff;
       border: 1px solid rgba(255,255,255,.12);
     }
 
-    /* ===== PAGE LAYOUT (one screen) ===== */
+    /* SCREEN (one view height) */
     .screen{
-      height: 100vh;
-      width: 100vw;
-      padding-top: 72px; /* space for navbar */
-      display: grid;
-      place-items: center;
+      height:100vh;
+      width:100vw;
+      padding-top:72px; /* navbar space */
+      padding-bottom:50px; /* footer space */
+      display:grid;
+      place-items:center;
     }
 
-    .wrap{
-      width: min(980px, 92vw);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 18px;
+    /* FADE SWAP WRAPPER */
+    .stage{
+      width:min(980px, 92vw);
+      position:relative;
+    }
+    .view{
+      transition: opacity .22s ease, transform .22s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .view.fade-out{
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events:none;
     }
 
-    /* ===== HERO ===== */
+    /* HERO (front page) */
+    .hero{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:26px;
+      text-align:left;
+    }
+
     .avatar{
-      width: 180px;
-      height: 180px;
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid rgba(255,255,255,.18);
       box-shadow: 0 18px 50px var(--shadow);
       background: rgba(0,0,0,.35);
+      flex:0 0 auto;
     }
 
-    h1{
-      font-size: clamp(2.1rem, 4vw, 3.2rem);
+    .hero-text h1{
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
       font-weight: 600;
       letter-spacing: .4px;
+      line-height: 1.05;
       text-shadow: 0 10px 26px rgba(0,0,0,.45);
     }
 
-    .title{
-      font-size: clamp(1.05rem, 1.8vw, 1.5rem);
+    .hero-text .title{
+      margin-top: 12px;
+      font-size: clamp(1.2rem, 2vw, 1.9rem);
       font-weight: 300;
       color: var(--muted);
-      margin-top: 2px;
     }
 
-    .line{
-      width: min(420px, 78%);
+    .hero-text .line{
+      margin-top: 18px;
+      width: min(420px, 92%);
       height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      margin-top: 6px;
+      background: rgba(255,255,255,.20);
     }
 
-    /* ===== GLASS INFO CARD (hidden until click) ===== */
-    .card{
+    /* CENTERED CONTENT (when hero disappears) */
+    .panel{
       width: min(820px, 92vw);
-      margin-top: 14px;
-      padding: 18px 18px 16px;
+      margin: 0 auto;
+      padding: 22px;
       border-radius: 18px;
       background: var(--glass);
       border: 1px solid var(--glass-border);
-      box-shadow: 0 18px 55px rgba(0,0,0,.45);
       backdrop-filter: blur(14px);
-      display: none;              /* hidden by default */
-      max-height: 36vh;           /* keeps it one-screen */
-      overflow: auto;             /* if content is long, it scrolls inside the card only */
+      box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      text-align: left;
     }
 
-    .card.show{
-      display: block;
-      animation: fadeUp .18s ease-out;
-    }
-
-    @keyframes fadeUp{
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .card h2{
-      font-size: 1.15rem;
+    .panel h2{
+      font-size: 1.35rem;
       font-weight: 600;
       margin-bottom: 10px;
-      color: #fff;
-      text-align: left;
     }
 
-    .card p{
-      color: rgba(255,255,255,.78);
-      line-height: 1.65;
-      font-size: 0.98rem;
-      text-align: left;
+    .panel p, .panel li{
+      color: rgba(255,255,255,.80);
+      line-height: 1.7;
+      font-size: 1.02rem;
     }
 
-    .card ul{
-      margin: 8px 0 0 18px;
-      color: rgba(255,255,255,.78);
-      line-height: 1.65;
-      text-align: left;
+    .panel ul{
+      margin: 10px 0 0 18px;
     }
 
-    /* ===== MOBILE ===== */
+    /* If content is too long, scroll INSIDE panel, not page */
+    .panel{
+      max-height: 56vh;
+      overflow:auto;
+    }
+
+    /* FOOTER */
+    footer{
+      position:fixed;
+      left:0; right:0;
+      bottom: 12px;
+      text-align:center;
+      color:#ffffff;
+      font-size: 0.95rem;
+      opacity: .9;
+      z-index: 999;
+      pointer-events:none;
+    }
+
+    /* MOBILE */
+    @media (max-width: 820px){
+      .hero{
+        flex-direction:column;
+        text-align:center;
+        gap:16px;
+      }
+      .hero-text .line{
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .avatar{
+        width: 170px;
+        height: 170px;
+      }
+    }
+
     @media (max-width: 600px){
       header{ padding: 12px 10px; }
-      .nav{ gap: 12px; }
-      .avatar{ width: 150px; height: 150px; }
-      .card{ max-height: 40vh; }
+      nav{ gap: 12px; }
+      .screen{ padding-top: 78px; }
+      .panel{ max-height: 60vh; }
     }
   </style>
 </head>
 
 <body>
-  <!-- NAVBAR -->
   <header>
-    <nav class="nav" aria-label="Main navigation">
-      <a data-section="home" class="active">Home</a>
-      <a data-section="about">About</a>
-      <a data-section="experience">Experience</a>
-      <a data-section="projects">Projects</a>
-      <a data-section="contact">Contact</a>
+    <nav aria-label="Main navigation">
+      <a data-view="home" class="active">Home</a>
+      <a data-view="about">About</a>
+      <a data-view="experience">Experience</a>
+      <a data-view="projects">Projects</a>
+      <a data-view="contact">Contact</a>
     </nav>
   </header>
 
-  <!-- ONE SCREEN -->
   <main class="screen">
-    <div class="wrap">
-      <!-- HERO: photo + name + title -->
-      <img class="avatar" src="images/profile.jpg" alt="Veljko Dordevic" />
-      <div>
-        <h1>Veljko Dordevic</h1>
-        <div class="title">Cybersecurity Specialist</div>
-        <div class="line"></div>
+    <div class="stage">
+      <!-- HERO VIEW (front page) -->
+      <div id="homeView" class="view">
+        <div class="hero">
+          <img class="avatar" src="images/profile.jpg" alt="Veljko Dordevic" />
+          <div class="hero-text">
+            <h1>Veljko Dordevic</h1>
+            <div class="title">Cybersecurity Specialist</div>
+            <div class="line"></div>
+          </div>
+        </div>
       </div>
 
-      <!-- GLASS INFO CARD (hidden until buttons) -->
-      <section id="infoCard" class="card" aria-live="polite">
-        <h2 id="cardTitle">Title</h2>
-        <div id="cardBody"></div>
-      </section>
+      <!-- CONTENT VIEW (centered panel) -->
+      <div id="contentView" class="view" style="display:none;">
+        <div class="panel" role="region" aria-live="polite">
+          <h2 id="panelTitle">Title</h2>
+          <div id="panelBody"></div>
+        </div>
+      </div>
     </div>
   </main>
 
+  <footer>© 2026 Veljko Dordevic</footer>
+
   <script>
-    // Content (edit these anytime)
-    const content = {
-      home: {
-        title: "",
-        body: ""
-      },
+    const navLinks = document.querySelectorAll("nav a");
+    const homeView = document.getElementById("homeView");
+    const contentView = document.getElementById("contentView");
+    const panelTitle = document.getElementById("panelTitle");
+    const panelBody = document.getElementById("panelBody");
+
+    const pages = {
       about: {
         title: "About",
         body: `
           <p>
-            Paste your About text here. Keep it short so it fits on one screen.
-            (If it’s long, it will scroll INSIDE this card only.)
+            Paste your About text here. Keep it short for a clean centered look.
+            If it gets long, it will scroll inside this panel only.
           </p>
         `
       },
       experience: {
         title: "Experience",
         body: `
-          <p>
-            Paste your experience here. Example:
-          </p>
+          <p>Paste your experience here. Example format:</p>
           <ul>
-            <li>15+ years heavy equipment / fleet operations (transferable troubleshooting & safety discipline)</li>
-            <li>Transitioning into cybersecurity with hands-on networking and security labs</li>
-            <li>Strong focus on documentation, procedures, and incident awareness</li>
+            <li>15+ years heavy equipment / fleet operations (strong troubleshooting & safety discipline)</li>
+            <li>Cybersecurity Specialist program: networking, system security, security fundamentals</li>
+            <li>Hands-on labs: secure configurations, documentation, incident awareness</li>
           </ul>
         `
       },
       projects: {
         title: "Projects",
         body: `
-          <p>
-            Add your cybersecurity or networking projects here. Example:
-          </p>
+          <p>Paste your projects here:</p>
           <ul>
-            <li>Network design & IP addressing (multi-site office)</li>
-            <li>Basic SOC-style monitoring labs and security hardening</li>
-            <li>Website-as-resume portfolio build</li>
+            <li>Website-as-resume portfolio</li>
+            <li>Network design & IP addressing (multi-site)</li>
+            <li>Security hardening labs</li>
           </ul>
         `
       },
@@ -265,45 +297,58 @@
         title: "Contact",
         body: `
           <p>
-            Email: your@email.com<br>
+            Email: your@email.com<br/>
             LinkedIn: linkedin.com/in/yourprofile
           </p>
         `
       }
     };
 
-    const links = document.querySelectorAll(".nav a");
-    const card = document.getElementById("infoCard");
-    const cardTitle = document.getElementById("cardTitle");
-    const cardBody = document.getElementById("cardBody");
-
     function setActive(link){
-      links.forEach(a => a.classList.remove("active"));
+      navLinks.forEach(a => a.classList.remove("active"));
       link.classList.add("active");
     }
 
-    function show(section){
-      if(section === "home"){
-        card.classList.remove("show");
-        cardTitle.textContent = "";
-        cardBody.innerHTML = "";
-        return;
-      }
-      cardTitle.textContent = content[section].title;
-      cardBody.innerHTML = content[section].body;
-      card.classList.add("show");
+    function fadeSwap(hideEl, showEl, afterHide){
+      // Start fading out current
+      hideEl.classList.add("fade-out");
+
+      // After fade-out, swap display
+      setTimeout(() => {
+        hideEl.style.display = "none";
+        hideEl.classList.remove("fade-out");
+
+        if(afterHide) afterHide();
+
+        showEl.style.display = "block";
+        // Fade in (ensure starts visible state)
+        showEl.classList.remove("fade-out");
+      }, 220);
     }
 
-    links.forEach(a => {
-      a.addEventListener("click", () => {
-        const section = a.getAttribute("data-section");
-        setActive(a);
-        show(section);
+    function goHome(){
+      if(homeView.style.display !== "none") return; // already home
+      fadeSwap(contentView, homeView);
+    }
+
+    function goPage(key){
+      // Update panel content first (so it’s ready)
+      panelTitle.textContent = pages[key].title;
+      panelBody.innerHTML = pages[key].body;
+
+      if(contentView.style.display !== "none") return; // already showing content
+      fadeSwap(homeView, contentView);
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        const view = link.getAttribute("data-view");
+        setActive(link);
+
+        if(view === "home") goHome();
+        else goPage(view);
       });
     });
-
-    // Start on Home (no card visible)
-    show("home");
   </script>
 </body>
 </html>
